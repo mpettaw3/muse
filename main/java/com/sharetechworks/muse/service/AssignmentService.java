@@ -18,7 +18,6 @@ public class AssignmentService {
         return assignmentRepository.findAll();
     }
 
-
     public List<Assignment> findByCompanyId(long companyId){
         return assignmentRepository.findByCompanyId(companyId);
     }
@@ -30,7 +29,6 @@ public class AssignmentService {
         return assignmentRepository.findByEmployeeId(employeeId);
     }
 
-
     public List<Assignment> findByServiceId(long serviceId){
         return assignmentRepository.findByServiceId(serviceId);
     }
@@ -40,6 +38,7 @@ public class AssignmentService {
     }
 
     public Assignment saveAssignment(Assignment assignment){
+
         return assignmentRepository.save(assignment);
     }
 
