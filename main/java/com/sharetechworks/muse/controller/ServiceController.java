@@ -7,11 +7,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.Optional;
 
-@Controller
+@RestController
 @RequestMapping("/service")
 public class ServiceController {
     private final ServiceService sService;
@@ -48,8 +49,14 @@ public class ServiceController {
         return sService.findServiceByCompanyId(companyId);
     }
 
+    @SneakyThrows
     @GetMapping("/findByCompanyIdAndTitle")
-    public List<Service> findServiceByCompanyIdAndTitle(String title, long companyId){
-        return sService.findServiceByTitleAndCompanyId(title, companyId);
+    public Service findServiceByCompanyIdAndTitle(String title, long companyId){
+        Optional<Service> s =sService.findServiceByTitleAndCompanyId(title, companyId);
+        if(s.isPresent()){
+            return s.get();
+        }else{
+            throw new Exception("We could not find a service with that title and companyId");
+        }
     }
 }

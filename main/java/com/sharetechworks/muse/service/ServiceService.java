@@ -19,7 +19,7 @@ public class ServiceService {
     public List<com.sharetechworks.muse.DOA.Service> findServiceByCompanyId(long companyId){
         return serviceRepository.findServiceByCompanyId(companyId);
     }
-    public List<com.sharetechworks.muse.DOA.Service> findServiceByTitleAndCompanyId(String title, long id){
+    public Optional<com.sharetechworks.muse.DOA.Service> findServiceByTitleAndCompanyId(String title, long id){
         return serviceRepository.findServiceByTitleAndCompanyId(title, id);
     }
     public Optional<com.sharetechworks.muse.DOA.Service> findServiceById(long id){
